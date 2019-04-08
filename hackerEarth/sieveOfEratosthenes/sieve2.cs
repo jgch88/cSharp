@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Diagnostics;
 
 public class sieve
 {
   public List<int> list;
   private int currentPrime;
   private int index;
-  
+
   public sieve(int n)
   {
 
@@ -33,12 +32,8 @@ public class sieve
 
   public static void Main(string[] args)
   {
-    Stopwatch stopWatch = new Stopwatch();
-    stopWatch.Start();
-    sieve sieve = new sieve(100000);
-    stopWatch.Stop();
-
+    string n = Console.ReadLine();
+    sieve sieve = new sieve(Int32.Parse(n));
     Console.WriteLine(string.Join(" ", sieve.list));
-    Console.WriteLine(stopWatch.Elapsed);
   }
 }
