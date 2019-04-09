@@ -2,9 +2,6 @@ using System;
 using System.Linq;
 
 public class anagram {
-  public anagram() {
-
-  }
 
   public static void Main(string[] args) {
     int t = Int32.Parse(Console.ReadLine());
@@ -27,7 +24,7 @@ public class anagram {
       // keep walking until one reaches the end, then delete the remaining characters
       // of the string that hasn't walked to the end
     
-      while (!((index1 == sortedS1.Length - 1) || (index2 == sortedS2.Length - 1))) {
+      do {
         if ((sortedS1[index1].CompareTo(sortedS2[index2]) == 0)) {
           index1++;
           index2++;
@@ -39,12 +36,12 @@ public class anagram {
           deletedCharacters++;
         }
         // Console.WriteLine(index1 + " " + index2 + " " + deletedCharacters);
-      }
+      } while (!((index1 == sortedS1.Length) || (index2 == sortedS2.Length)));
 
-      if (index1 == sortedS1.Length - 1) {
-        deletedCharacters += (sortedS2.Length - 1 - index2);
-      } else if (index2 == sortedS2.Length - 1) {
-        deletedCharacters += (sortedS1.Length - 1 - index1);
+      if (index1 == sortedS1.Length) {
+        deletedCharacters += (sortedS2.Length - index2);
+      } else if (index2 == sortedS2.Length) {
+        deletedCharacters += (sortedS1.Length - index1);
       }
 
       Console.WriteLine(deletedCharacters);
