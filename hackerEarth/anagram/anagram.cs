@@ -4,11 +4,13 @@ using System.Linq;
 public class anagram {
 
   public static void Main(string[] args) {
-    int t = Int32.Parse(Console.ReadLine());
+    int t = Convert.ToInt32(Console.ReadLine());
+    string s1;
+    string s2;
 
-    for (int i = 0; i < t; i++) {
-      string s1 = Console.ReadLine();
-      string s2 = Console.ReadLine();
+    for (int j = 0; j < t; j++) {
+      s1 = Convert.ToString(Console.ReadLine()).Replace(" ", String.Empty);
+      s2 = Convert.ToString(Console.ReadLine()).Replace(" ", String.Empty);
 
       string sortedS1 = new string (s1.OrderBy(c => c).ToArray());
       string sortedS2 = new string (s2.OrderBy(c => c).ToArray());
@@ -31,11 +33,10 @@ public class anagram {
         } else if (sortedS1[index1].CompareTo(sortedS2[index2]) < 0) {
           index1++;
           deletedCharacters++;
-        } else if (sortedS2[index2].CompareTo(sortedS1[index1]) > 0) {
+        } else if (sortedS2[index2].CompareTo(sortedS1[index1]) < 0) {
           index2++;
           deletedCharacters++;
-        }
-        // Console.WriteLine(index1 + " " + index2 + " " + deletedCharacters);
+        } 
       } while (!((index1 == sortedS1.Length) || (index2 == sortedS2.Length)));
 
       if (index1 == sortedS1.Length) {
