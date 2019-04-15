@@ -43,8 +43,14 @@ class pmNo {
     int sqrt = (int) Math.Sqrt(n) + 1; // To optimise, we only need to find the primes up to sqrt(n)
     // Filter out multiples
     while (currentPrime <= sqrt) {
+    // https://www.quora.com/What-is-the-segmented-sieve-of-Eratosthenes
     // while (currentPrime != list[list.Count - 1]) {
-      list = list.Where(p => (p % currentPrime != 0) || (p == currentPrime)).ToList();
+      // list = list.Where(p => (p % currentPrime != 0) || (p == currentPrime)).ToList();
+      for (int j = list.Count() - 1; j >= 0; j--) {
+        if (list[j] % currentPrime == 0 && list[j] != currentPrime) {
+          list.Remove(list[j]);
+        }
+      }
       index++;
       currentPrime = list[index];
     }
